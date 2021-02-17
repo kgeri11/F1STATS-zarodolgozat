@@ -1,0 +1,25 @@
+#balfent
+{
+    height: auto;
+    margin: auto;
+    position: relative;
+    top: 100px;
+    overflow: visible;
+    z-index: 1;
+    box-shadow: 20px 20px 10px #708090;
+}
+
+.szövegdoboz
+{
+    width: 100%;
+    border: 5px solid black;
+}
+
+.keretes
+{
+    border: 5px solid red;
+    border-radius: 20px;
+    padding: 3px;
+    background-color: black;
+    color: white;
+}
