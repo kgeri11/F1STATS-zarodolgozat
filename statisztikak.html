@@ -66,174 +66,213 @@
       </div>
     </nav>
 
-    <!--Grafikon megjelenítő sáv-->
+    <!--Oldal-->
     <div id="oldal">
 
-    
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div
-            id="expand"
-            class="alert alert-primary alert-dismissible alert-warning"
-          >
-            <h4 style="text-align: center;" class="alert-heading">
-              Legtöbb győzelemmel rendelkező pilóták
-            </h4>
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-    </div>
-
-    <!--Grafikon lenyíló sáv-->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div id="chart-container">
-            <canvas id="graphCanvas"></canvas>
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-    </div>
-
-    <!--Grafikon megjelenítő sáv-->
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div
-            id="expand2"
-            class="alert alert-primary alert-dismissible alert-warning"
-          >
-            <h4 style="text-align: center;" class="alert-heading">
-              Legtöbb győzelemmel rendelkező csapatok
-            </h4>
-            <p style="text-align: center">
-              Az alábbi ábra azon konstruktőröket tartalmazza, akik a FIA
-              Formula–1 világbajnokságba számító nagydíjat nyertek. Az abszolút
-              csúcsot az olasz Scuderia Ferrari tartja, ami az első verseny
-              kivételével minden versenyen részt vett és ez alatt 238 versenyt
-              nyertek meg.
-            </p>
-            <p>
-              
-            </p>
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-    </div>
-
-    <!--Grafikon lenyíló sáv-->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div id="chart-container">
-            <canvas id="myChart"></canvas>
-            
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-    </div>
-
-
-
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div
-            id="expand3"
-            class="alert alert-primary alert-dismissible alert-warning">
-            <h4 style="text-align: center;" class="alert-heading">
-              Versenyek száma szezononként
-            </h4>
-            <p style="text-align: center;">
-              Az 1950 óta megrendezett Formula–1 világbajnokság történetében 41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár ugyanazon szezonon belül – azonban csak a nemzeti nagydíj mellett megrendezett, más címért kiírt verseny volt.
-            </p>
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-    </div>
-
-     <!--Grafikon lenyíló sáv-->
-     <div class="container-fluid">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div id="chart-container">            
-            <canvas id="graphRound"></canvas>
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-    </div>
-
-
-
-    <!--Grafikon script-->
-    <script>
       
-        
-          $.post("gyoztesek.php", function (data) {
-            console.log(data);
-            var id = [];
-            var name = [];
-            var wins = [];
 
-            for (var i in data) {
-              id.push(data[i].driverId);
-              name.push(data[i].surname);
-              wins.push(data[i].wins);
-            }
+      
+      <!--Kattintható győzelmek leírás-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div
+              id="expand"
+              class="alert alert-primary alert-dismissible alert-warning"
+            >
+              <h4 style="text-align: center" class="alert-heading">
+                Legtöbb győzelemmel rendelkező pilóták
+              </h4>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
 
-            var chartdata = {
-              labels: name,
-              datasets: [
+      <!--Győzelmek grafikon-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div id="chart-container">
+              <canvas id="graphCanvas"></canvas>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <!--Kattintható konstuktőri győzelmek leírás-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div
+              id="expand2"
+              class="alert alert-primary alert-dismissible alert-warning"
+            >
+              <h4 style="text-align: center" class="alert-heading">
+                Legtöbb győzelemmel rendelkező csapatok
+              </h4>
+              <p style="text-align: center">
+                Az alábbi ábra azon konstruktőröket tartalmazza, akik a FIA
+                Formula–1 világbajnokságba számító nagydíjat nyertek. Az
+                abszolút csúcsot az olasz Scuderia Ferrari tartja, ami az első
+                verseny kivételével minden versenyen részt vett és ez alatt 238
+                versenyt nyertek meg.
+              </p>
+              <p></p>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <!--Konstruktőri győzelmek grafikon-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div id="chart-container">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <!--Kattintható futam/év leírás-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div
+              id="expand3"
+              class="alert alert-primary alert-dismissible alert-warning"
+            >
+              <h4 style="text-align: center" class="alert-heading">
+                Versenyek száma szezononként
+              </h4>
+              <p style="text-align: center">
+                Az 1950 óta megrendezett Formula–1 világbajnokság történetében
+                41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
+                ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
+                mellett megrendezett, más címért kiírt verseny volt.
+              </p>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <!--Futam/év grafikon-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div id="chart-container">
+              <canvas id="graphRound"></canvas>              
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <!--Kattintható helyszínek leírás-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div
+              id="expand4"
+              class="alert alert-primary alert-dismissible alert-warning"
+            >
+              <h4 style="text-align: center" class="alert-heading">
+                Versenyek száma helyszínenként
+              </h4>
+              <p style="text-align: center">
+                Az 1950 óta megrendezett Formula–1 világbajnokság történetében
+                41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
+                ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
+                mellett megrendezett, más címért kiírt verseny volt.
+              </p>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <!--Helyszínek grafikon-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div id="chart-container">
+              <canvas
+                id="graphLocations"                
+              ></canvas>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+    
+    </div>
+
+    <!-- grafikon scriptek-->
+    <script>
+      //#region Győzelmek
+      $.post("gyoztesek.php", function (data) {
+        console.log(data);
+        var id = [];
+        var name = [];
+        var wins = [];
+
+        for (var i in data) {
+          id.push(data[i].driverId);
+          name.push(data[i].surname);
+          wins.push(data[i].wins);
+        }
+
+        var chartdata = {
+          labels: name,
+          datasets: [
+            {
+              label: "Győzelmek",
+              backgroundColor: dynamicColors(),
+              borderColor: dynamicColors(),
+              hoverBackgroundColor: "#CCCCCC",
+              hoverBorderColor: "#666666",
+              data: wins,
+            },
+          ],
+          options: {
+            scales: {
+              yAxes: [
                 {
-                  label: "Győzelmek",
-                  backgroundColor: "#ff1801",
-                  borderColor: "#000",
-                  hoverBackgroundColor: "#CCCCCC",
-                  hoverBorderColor: "#666666",                
-                  data: wins,
+                  ticks: {
+                    begintAtZero: true,
+                  },
                 },
               ],
+            },
+          },
+        };
 
-              options: {
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: {
-                        begintAtZero: true,
-                      },
-                    },
-                  ],
-                },
-              },
-            };
+        var graphTarget = $("#graphCanvas");
 
-            var graphTarget = $("#graphCanvas");
+        var barGraph = new Chart(graphTarget, {
+          type: "bar",
+          fill: false,
+          data: chartdata,
+        });
+      });
+      //#endregion
 
-            var barGraph = new Chart(graphTarget, {
-              type: "bar",
-              fill: false,
-              data: chartdata,
-            });
-          });
-        
-      
-          var ctx = document.getElementById("myChart");
+      //#region Konstruktőri győzelmek
+
+      var ctx = document.getElementById("myChart");
       var myChart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -293,57 +332,118 @@
           },
         },
       });
+      //#endregion
 
-
+      //#region Futamok grafikon script
 
       $.post("rPERs.php", function (dataRounds) {
-            console.log(dataRounds);
-            var year = [];
-            var round = [];
-            
+        console.log(dataRounds);
+        var year = [];
+        var round = [];
 
-            for (var i in dataRounds) {
-              year.push(dataRounds[i].year);
-              round.push(dataRounds[i].round);             
-            }
+        for (var i in dataRounds) {
+          year.push(dataRounds[i].year);
+          round.push(dataRounds[i].round);
+        }
 
-            var chartdata = {
-              labels: year,
-              datasets: [
+        var chartdata = {
+          labels: year,
+          datasets: [
+            {
+              label: "Versenyek száma",
+              backgroundColor: dynamicColors(),
+              borderColor: dynamicColors(),
+              hoverBackgroundColor: "#CCCCCC",
+              hoverBorderColor: "#666666",
+              fill: false,
+              data: round,
+            },
+          ],
+
+          options: {
+            scales: {
+              yAxes: [
                 {
-                  label: "Versenyek száma",
-                  backgroundColor: "#000",
-                  borderColor: "#ff1801",
-                  hoverBackgroundColor: "#CCCCCC",
-                  hoverBorderColor: "#666666",
-                  fill: false,
-                  data: round,
+                  ticks: {
+                    begintAtZero: true,
+                  },
                 },
               ],
+            },
+          },
+        };
 
-              options: {
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: {
-                        begintAtZero: true,
-                      },
-                    },
-                  ],
+        var graphTarget = $("#graphRound");
+
+        var barGraph = new Chart(graphTarget, {
+          type: "line",
+          data: chartdata,
+        });
+      });
+      //#endregion
+
+      //#region Helyszínek grafikon script
+
+      $.post("futamok.php", function (dataLocations) {
+        console.log(dataLocations);
+        var name = [];
+        var alkalmak = [];
+
+        for (var i in dataLocations) {
+          name.push(dataLocations[i].name);
+          alkalmak.push(dataLocations[i].alkalmak);
+        }
+
+        var chartdata = {
+          labels: name,
+          datasets: [
+            {
+              label: "Futamok száma helyszínenklnt",
+              backgroundColor: dynamicColors(),
+              borderColor: dynamicColors(),
+              hoverBackgroundColor: "#CCCCCC",
+              hoverBorderColor: "#666666",
+              data: alkalmak,
+            },
+          ],
+
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    begintAtZero: true,
+                  },
                 },
-              },
-            };
+              ],
+            },
+          },
+        };
 
-            var graphTarget = $("#graphRound");
+        var graphTarget = $("#graphLocations");
 
-            var barGraph = new Chart(graphTarget, {
-              type: "line",              
-              data: chartdata,
-            });
-          });
+        var barGraph = new Chart(graphTarget, {
+          type: "bar",
+          data: chartdata,
+        });
+      });
 
+      //#endregion
 
-          $(document).ready(function () {
+      //#region Randomszínek
+
+      var dynamicColors = function () {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        return "rgb(" + r + "," + g + "," + b + ")";
+      };
+
+      //#endregion
+
+      //#region Nyitás-csukás
+
+      $(document).ready(function () {
         $("#expand").click(function () {
           $("#graphCanvas").toggle("slow");
         });
@@ -361,27 +461,13 @@
         });
       });
 
-    </script>
+      $(document).ready(function () {
+        $("#expand4").click(function () {
+          $("#graphLocations").toggle("slow");
+        });
+      });
 
-    
-   
-
-
-    
-    <script>
-      
-          
-        
-      
-    </script>
-
-
-
-
-
-    <!--Grafikon megjelenítő script-->
-    <script>
-      
+      //#endregion
     </script>
   </body>
 </html>
