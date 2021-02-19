@@ -18,3 +18,12 @@ button {
 {
     background-color: black;
 }
+
+.keretes
+{
+    border: 5px solid red;
+    border-radius: 20px;
+    padding: 3px;
+    background-color: black;
+    color: white;
+}

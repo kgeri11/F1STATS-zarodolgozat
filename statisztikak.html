@@ -69,13 +69,13 @@
     <!--Oldal-->
     <div id="oldal">
 
-      
+      <br><br><br>
 
       
       <!--Kattintható győzelmek leírás-->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
+          
           <div class="col-8">
             <div
               id="expand"
@@ -91,22 +91,25 @@
       </div>
 
       <!--Győzelmek grafikon-->
-      <div class="container-fluid">
+      <div id="egeszgyozelmek" class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
+          
           <div class="col-8">
             <div id="chart-container">
               <canvas id="graphCanvas"></canvas>
             </div>
           </div>
-          <div class="col-2"></div>
+          
+          <div class="col-4"></div>
         </div>
       </div>
+
+      <br>
 
       <!--Kattintható konstuktőri győzelmek leírás-->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
+          <div class="col-4"></div>
           <div class="col-8">
             <div
               id="expand2"
@@ -114,75 +117,78 @@
             >
               <h4 style="text-align: center" class="alert-heading">
                 Legtöbb győzelemmel rendelkező csapatok
-              </h4>
-              <p style="text-align: center">
-                Az alábbi ábra azon konstruktőröket tartalmazza, akik a FIA
-                Formula–1 világbajnokságba számító nagydíjat nyertek. Az
-                abszolút csúcsot az olasz Scuderia Ferrari tartja, ami az első
-                verseny kivételével minden versenyen részt vett és ez alatt 238
-                versenyt nyertek meg.
-              </p>
-              <p></p>
+              </h4>              
             </div>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
 
       <!--Konstruktőri győzelmek grafikon-->
-      <div class="container-fluid">
+      <div id="egeszkonstruktor" class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
+          <div class="col-4">
+            <p style="text-align: center">
+              Az alábbi ábra azon konstruktőröket tartalmazza, akik a FIA
+              Formula–1 világbajnokságba számító nagydíjat nyertek. Az
+              abszolút csúcsot az olasz Scuderia Ferrari tartja, ami az első
+              verseny kivételével minden versenyen részt vett és ez alatt 238
+              versenyt nyertek meg.
+            </p>
+          </div>
           <div class="col-8">
             <div id="chart-container">
               <canvas id="myChart"></canvas>
             </div>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
+
+      <br>
 
       <!--Kattintható futam/év leírás-->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
           <div class="col-8">
             <div
               id="expand3"
               class="alert alert-primary alert-dismissible alert-warning"
             >
-              <h4 style="text-align: center" class="alert-heading">
+              <h4 style="text-align: center; " class="alert-heading">
                 Versenyek száma szezononként
               </h4>
-              <p style="text-align: center">
-                Az 1950 óta megrendezett Formula–1 világbajnokság történetében
-                41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
-                ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
-                mellett megrendezett, más címért kiírt verseny volt.
-              </p>
+              
             </div>
           </div>
-          <div class="col-2"></div>
+          <div class="col-4">            
+          </div>
         </div>
       </div>
 
       <!--Futam/év grafikon-->
-      <div class="container-fluid">
+      <div id="egeszfutamev" class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
           <div class="col-8">
             <div id="chart-container">
               <canvas id="graphRound"></canvas>              
             </div>
           </div>
-          <div class="col-2"></div>
+          <div class="col-4" style="padding: 30px;">
+            <p style="text-align: center; margin: 40px;">
+              Az 1950 óta megrendezett Formula–1 világbajnokság történetében
+              41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
+              ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
+              mellett megrendezett, más címért kiírt verseny volt.
+            </p>
+          </div>
         </div>
       </div>
+
+      <br>
 
       <!--Kattintható helyszínek leírás-->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
+          <div class="col-4"></div>
           <div class="col-8">
             <div
               id="expand4"
@@ -191,22 +197,23 @@
               <h4 style="text-align: center" class="alert-heading">
                 Versenyek száma helyszínenként
               </h4>
-              <p style="text-align: center">
-                Az 1950 óta megrendezett Formula–1 világbajnokság történetében
-                41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
-                ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
-                mellett megrendezett, más címért kiírt verseny volt.
-              </p>
+              
             </div>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
 
       <!--Helyszínek grafikon-->
-      <div class="container-fluid">
+      <div id="egeszhelyszin" class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
+          <div class="col-4">
+            <p style="text-align: center">
+              Az 1950 óta megrendezett Formula–1 világbajnokság történetében
+              41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
+              ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
+              mellett megrendezett, más címért kiírt verseny volt.
+            </p>
+          </div>
           <div class="col-8">
             <div id="chart-container">
               <canvas
@@ -214,7 +221,6 @@
               ></canvas>
             </div>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
     
@@ -445,25 +451,25 @@
 
       $(document).ready(function () {
         $("#expand").click(function () {
-          $("#graphCanvas").toggle("slow");
+          $("#egeszgyozelmek").toggle("slow");
         });
       });
 
       $(document).ready(function () {
         $("#expand2").click(function () {
-          $("#myChart").toggle("slow");
+          $("#egeszkonstruktor").toggle("slow");
         });
       });
 
       $(document).ready(function () {
         $("#expand3").click(function () {
-          $("#graphRound").toggle("slow");
+          $("#egeszfutamev").toggle("slow");
         });
       });
 
       $(document).ready(function () {
         $("#expand4").click(function () {
-          $("#graphLocations").toggle("slow");
+          $("#egeszhelyszin").toggle("slow");
         });
       });
 
