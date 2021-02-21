@@ -18,7 +18,7 @@
   <body>
     <!--Navigációs menü-->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="statisztikak.html">F1_SATS</a>
+      <a class="navbar-brand" href="fooldal.html">F1_SATS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -40,34 +40,44 @@
             <a class="nav-link" href="statisztikak.html">Statisztikák</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Összehasonlítás</a>
+            <a class="nav-link" href="osszehasonlitas.html">Összehasonlítás</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Speciális</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Belépés</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Regisztráció</a>
-          </li>
+            <a class="nav-link" href="specialis.html">Speciális</a>
+          </li>        
+          
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-          />
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-            Search
-          </button>
-          <ul class="navbar-nav mr-auto"></ul>
+        <form class="form-inline my-2 my-lg-0">          
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Belépés</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Regisztráció</a>
+            </li>      
+          </ul>
         </form>
+        
       </div>
+      
     </nav>
 
+
+    <!--Bevezető-->
+    <div id="bevezeto">
+      <div class="jumbotron">
+        <h1 class="display-3">Az alapok</h1>
+        <p class="lead">Ezen az oldaon megtalálod az alapvető statisztikai mutatókat vizualizált formában</p>
+        <hr class="my-4">
+        <p>A grafikonok a szövegdobozra kattintva nyithatók ki és csukhatók be</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+      </div>
+    </div>
+
     <!--Oldal-->
-    <div id="oldal">
+    <div id="grafikonok">
 
       <br><br><br>
 
@@ -126,8 +136,8 @@
       <!--Konstruktőri győzelmek grafikon-->
       <div id="egeszkonstruktor" class="container-fluid">
         <div class="row">
-          <div class="col-4">
-            <p style="text-align: center">
+          <div class="col-4" style="padding: 40px;">
+            <p style="text-align: justify" >
               Az alábbi ábra azon konstruktőröket tartalmazza, akik a FIA
               Formula–1 világbajnokságba számító nagydíjat nyertek. Az
               abszolút csúcsot az olasz Scuderia Ferrari tartja, ami az első
@@ -173,7 +183,7 @@
             </div>
           </div>
           <div class="col-4" style="padding: 30px;">
-            <p style="text-align: center; margin: 40px;">
+            <p style="text-align: justify;">
               Az 1950 óta megrendezett Formula–1 világbajnokság történetében
               41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
               ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
@@ -206,8 +216,8 @@
       <!--Helyszínek grafikon-->
       <div id="egeszhelyszin" class="container-fluid">
         <div class="row">
-          <div class="col-4">
-            <p style="text-align: center">
+          <div class="col-4" style="padding: 40px;">
+            <p style="text-align: justify">
               Az 1950 óta megrendezett Formula–1 világbajnokság történetében
               41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
               ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
@@ -218,6 +228,90 @@
             <div id="chart-container">
               <canvas
                 id="graphLocations"                
+              ></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+
+
+
+      <!--Kattintható valami#1 leírás-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8">
+            <div
+              id="expand4"
+              class="alert alert-primary alert-dismissible alert-warning"
+            >
+              <h4 style="text-align: center; " class="alert-heading">
+                Versenyek száma szezononként
+              </h4>
+              
+            </div>
+          </div>
+          <div class="col-4">            
+          </div>
+        </div>
+      </div>
+
+      <!--valami#1 grafikon-->
+      <div id="egeszfutamev" class="container-fluid">
+        <div class="row">
+          <div class="col-8">
+            <div id="chart-container">
+              <canvas id="graph?"></canvas>              
+            </div>
+          </div>
+          <div class="col-4" style="padding: 30px;">
+            <p style="text-align: justify; margin: 40px;">
+              Az 1950 óta megrendezett Formula–1 világbajnokság történetében
+              41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
+              ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
+              mellett megrendezett, más címért kiírt verseny volt.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <!--Kattintható valami#2 leírás-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <div
+              id="expand5"
+              class="alert alert-primary alert-dismissible alert-warning"
+            >
+              <h4 style="text-align: center" class="alert-heading">
+                Versenyek száma helyszínenként
+              </h4>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--valami#2 grafikon-->
+      <div id="egeszhelyszin" class="container-fluid">
+        <div class="row">
+          <div class="col-4" style="padding: 30px;">
+            <p style="text-align: justify">
+              Az 1950 óta megrendezett Formula–1 világbajnokság történetében
+              41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
+              ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
+              mellett megrendezett, más címért kiírt verseny volt.
+            </p>
+          </div>
+          <div class="col-8">
+            <div id="chart-container">
+              <canvas
+                id="graph??"                
               ></canvas>
             </div>
           </div>
@@ -389,7 +483,6 @@
       //#endregion
 
       //#region Helyszínek grafikon script
-
       $.post("futamok.php", function (dataLocations) {
         console.log(dataLocations);
         var name = [];
