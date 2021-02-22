@@ -8,13 +8,13 @@ $sqlQuery = "SELECT DISTINCT driverstandings.driverId,drivers.forename,drivers.s
 
 $result = mysqli_query($conn,$sqlQuery);
 
-$data = array();
+$dataPole = array();
 foreach ($result as $row) {
-	$data[] = $row;
+	$dataPole[] = $row;
 }
 
 
 mysqli_close($conn);
 
-echo json_encode($data);
+echo json_encode($dataPole);
 ?>
