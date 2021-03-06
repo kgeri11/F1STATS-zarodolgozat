@@ -1,8 +1,20 @@
 <?php
 session_start();
+$conn = mysqli_connect("localhost","root","","f1_1950-2020_adatbazis","3306");
+$sql = "SELECT DISTINCT results.driverId,CONCAT_WS(' ',drivers.forename,drivers.surname) AS fullname FROM `results` LEFT JOIN drivers ON results.driverId = drivers.driverId ORDER BY `fullname` ASC";
+$result = $conn->query($sql);
 
+if(!$result)
+{
+    die("Hibás sql lekérdezés!");
+}
+while ($row = $result->fetch_assoc()) {
+  $id = $row["driverId"];
+  $nev = $row["fullname"];
+  $html.='<option value"' . $row["driverId"] . '">' . $row["fullname"] . '</option>';
+}
 
-
+mysqli_close($conn);
 
 ?>
 
@@ -83,17 +95,18 @@ session_start();
 
   <label>Pilóta:</label>
   <form action="pilotavalasztas.php" method="get">
-  <select name="pilotak">
+    <select name="pilotak">
       <option value="-1">---Válassz---</option>
-      <?php
-      require_once("pilotavalasztas.php");
-       echo $valassz; 
-       ?>
-  </select>
+      <?php      
+      echo $html;
+      ?>
+    </select>
   </form>
-   
 
-  
+
+
+
+
   <br />
   <br />
 
@@ -181,17 +194,17 @@ session_start();
 
 </body>
 <footer>
-        <div id="footer">
-        <div class="footer navbar-fixed-bottom">      
-          <div class="row">
-            <div class="col-6">
-              <small-2">Kovács Gergő - 2021</small-2>                           
-            </div>
-            <div class="col-3"></div>      
-            <div class="col-3">Záródolgozat</div>
-            </div>
-          </div>
-          </div>        
-       </footer>
+  <div id="footer">
+    <div class="footer navbar-fixed-bottom">
+      <div class="row">
+        <div class="col-6">
+          <small-2">Kovács Gergő - 2021</small-2>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3">Záródolgozat</div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </html>

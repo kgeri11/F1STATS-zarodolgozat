@@ -8,12 +8,7 @@ if(!$result)
 {
     die("Hibás sql lekérdezés!");
 }
-while ($row = $result -> fetch_array()) {
-  var_dump($row);
-    $id = $row["driverId"];
-    $nev = $row["fullname"];
-    $valassz.='<option value"'.$row[0].'">'.$row[1].'</option>';
-}
+
 
 mysqli_close($conn);
 

@@ -77,6 +77,55 @@
     </div>
 
 
+
+
+    <script>
+      $.post("specialis.php", function (dataPole) {
+        console.log(dataPole);
+        var name = [];
+        var pole = [];
+
+        for (var i in dataPole) {
+          name.push(dataPole[i].surname);
+          pole.push(dataPole[i].pole);
+        }
+
+        var chartdata = {
+          labels: name,
+          datasets: [
+            {
+              label: "Futamok száma helyszínenklnt",
+              backgroundColor: dynamicColors(),
+              borderColor: dynamicColors(),
+              hoverBackgroundColor: "#CCCCCC",
+              hoverBorderColor: "#666666",
+              data: pole,
+            },
+          ],
+
+          options: {
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    begintAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        };
+
+        var graphTarget = $("#graphPole");
+
+        var barGraph = new Chart(graphTarget, {
+          type: "radar",
+          data: chartdata,
+        });
+      });
+    </script>
+
 </body>
 <footer>
   <div id="footer">
