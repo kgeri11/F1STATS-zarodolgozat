@@ -1,5 +1,9 @@
 <?php
-session_start()
+session_start();
+
+
+
+
 ?>
 
 
@@ -77,41 +81,22 @@ session_start()
 
 
 
-  <label>Attachment Type:</label>
-  <select name="attachmenttype" class="attachmenttype">
-    <option>Select Attachment Type</option>
-    <?php
-    var_dump($sqlDrivers);
-    while ($row = mysqli_fetch_array($sql)) {
-      echo '<option value="'.$row[1].'">'.$row[2].'</option>';
-    }
-    ?>
+  <label>Pilóta:</label>
+  <form action="pilotavalasztas.php" method="get">
+  <select name="pilotak">
+      <option value="-1">---Válassz---</option>
+      <?php
+      require_once("pilotavalasztas.php");
+       echo $valassz; 
+       ?>
   </select>
+  </form>
+   
+
+  
   <br />
   <br />
 
-
-
-
-
-  <!--csatlakozas ajax segitsegevel-->
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $(".attachmenttype").change(function() {
-        var attachmenttypenumber = $(this).val();
-        var post_Atnumber = 'Atypenumber=' + attachmenttypenumber;
-        $.ajax({
-          type: "POST",
-          url: "ajaxAttachments.php",
-          data: post_Atnumber,
-          cache: false,
-          success: function(attachments) {
-            $(".attachment").html(attachments);
-          }
-        });
-      });
-    });
-  </script>
 
 
 
