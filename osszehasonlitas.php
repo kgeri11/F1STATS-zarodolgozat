@@ -1,17 +1,17 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost","root","","f1_1950-2020_adatbazis","3306");
+$conn = mysqli_connect("localhost", "root", "", "f1_1950-2020_adatbazis", "3306");
 $sql = "SELECT DISTINCT results.driverId,CONCAT_WS(' ',drivers.forename,drivers.surname) AS fullname FROM `results` LEFT JOIN drivers ON results.driverId = drivers.driverId ORDER BY `fullname` ASC";
 $result = $conn->query($sql);
 
-if(!$result)
-{
-    die("Hibás sql lekérdezés!");
+
+if (!$result) {
+  die("Hibás sql lekérdezés!");
 }
 while ($row = $result->fetch_assoc()) {
   $id = $row["driverId"];
   $nev = $row["fullname"];
-  $html.='<option value"' . $row["driverId"] . '">' . $row["fullname"] . '</option>';
+  $html .= '<option value"' . $row["driverId"] . '">' . $row["fullname"] . '</option>';
 }
 
 mysqli_close($conn);
@@ -92,16 +92,33 @@ mysqli_close($conn);
 
 
 
+  <div class="container">
+    <div class="row">
+      <div class="col-2" >        
+      </div>
+      <div class="col-8">
+      <label>Pilóta:</label>
+        <form action="pilotavalasztas.php" method="get">
+          <select name="pilota1">
+            <option value="-1">---Válassz---</option>
+            <?php
+            echo $html;
+            ?>
+          </select>
+          <select name="pilota2">
+            <option value="-1">---Válassz---</option>
+            <?php
+            echo $html;
+            ?>
+          </select>
+          <button type="submit" style="color: white; background-color:red; border-color:black;">Küldés</button>
+        </form>
+      </div>
+      <div class="col-2" >        
+      </div>      
+    </div>
+  </div>
 
-  <label>Pilóta:</label>
-  <form action="pilotavalasztas.php" method="get">
-    <select name="pilotak">
-      <option value="-1">---Válassz---</option>
-      <?php      
-      echo $html;
-      ?>
-    </select>
-  </form>
 
 
 
@@ -118,69 +135,59 @@ mysqli_close($conn);
       <thead>
         <tr>
           <th scope="col">Type</th>
-          <th scope="col">Column heading</th>
-          <th scope="col">Column heading</th>
-          <th scope="col">Column heading</th>
+          <th scope="col" style="color: white; background-color:black;">1.Versenyző</th>
+          <th scope="col" style="color: white; background-color:red">2.Versenyző</th>
+          
         </tr>
       </thead>
       <tbody>
-        <tr class="table-active">
-          <th scope="row">Active</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr>
-          <th scope="row">Default</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="table-primary">
-          <th scope="row">Primary</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
         <tr class="table-secondary">
-          <th scope="row">Secondary</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="table-success">
-          <th scope="row">Success</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="table-danger">
-          <th scope="row">Danger</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="table-warning">
-          <th scope="row">Warning</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="table-info">
-          <th scope="row">Info</th>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Győzelmek</th>
           <td>Column content</td>
           <td>Column content</td>
         </tr>
         <tr class="table-light">
-          <th scope="row">Light</th>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Pódiumok</th>
           <td>Column content</td>
           <td>Column content</td>
         </tr>
-        <tr class="table-dark">
-          <th scope="row">Dark</th>
+        <tr class="table-secondary">
+          <th scope="row" style="text-align:justify">Pole poziciók</th>
           <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-light">
+          <th scope="row" style="text-align:justify">Leggyorsabb körök</th>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-secondary">
+          <th scope="row" style="text-align:justify">Futamok</th>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-light">
+          <th scope="row" style="text-align:justify">Danger</th>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-secondary">
+          <th scope="row" style="text-align:justify">Warning</th>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-light">
+          <th scope="row" style="text-align:justify">Info</th>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-secondary">
+          <th scope="row" style="text-align:justify">Light</th>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="table-light">
+          <th scope="row" style="text-align:justify">Dark</th>
           <td>Column content</td>
           <td>Column content</td>
         </tr>
