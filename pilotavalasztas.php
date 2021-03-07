@@ -2,9 +2,9 @@
 
 $conn = mysqli_connect("localhost","root","","f1_1950-2020_adatbazis","3306");
 if(isset($_GET['pilota1']))
-{
-    $p1=$_GET['pilota1'];
-    echo $p1;
+{    
+    $p1=$_GET['pilota1'];  
+    echo $p1;   
 }
 if(isset($_GET['pilota2']))
 {
