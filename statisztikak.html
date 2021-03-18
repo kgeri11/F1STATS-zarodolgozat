@@ -10,16 +10,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="footer.css" />
-    <link rel="stylesheet" href="bootstrap.css" />
-    <link rel="stylesheet" href="statisztikak.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/statisztikak.css" />
     
     <title>F1Stats</title>
   </head>
   <body>
     <!--Navigációs menü-->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="fooldal.html">F1_SATS</a>
+      <a class="navbar-brand" href="index.html">F1_SATS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -35,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="fooldal.html">Főoldal</a>
+            <a class="nav-link" href="index.html">Főoldal</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="statisztikak.html">Statisztikák</a>
@@ -78,7 +78,7 @@
     </div>
 
     <!--Oldal-->
-    <div id="grafikonok">
+    <div id="container-fluid">
 
       <br><br><br>
 
@@ -109,7 +109,7 @@
             <div class="wrapper">
 
             
-            <div id="chart-container">
+            <div class="container-fluid" id="chart-container">
               <canvas id="graphCanvas"></canvas>
             </div>
           </div>
@@ -151,7 +151,7 @@
             </p>
           </div>
           <div class="col-8">
-            <div id="chart-container">
+            <div class="media" id="chart-container">
               <canvas id="myChart"></canvas>
             </div>
           </div>
@@ -325,7 +325,7 @@
     <!-- grafikon scriptek-->
     <script>
       //#region Győzelmek
-      $.post("gyoztesek.php", function (data) {
+      $.post("php/gyoztesek.php", function (data) {
         console.log(data);
         var id = [];
         var name = [];
@@ -440,7 +440,7 @@
 
       //#region Futamok grafikon script
 
-      $.post("rPERs.php", function (dataRounds) {
+      $.post("php/rPERs.php", function (dataRounds) {
         console.log(dataRounds);
         var year = [];
         var round = [];
@@ -488,7 +488,7 @@
       //#endregion
 
       //#region Helyszínek grafikon script
-      $.post("futamok.php", function (dataLocations) {
+      $.post("php/futamok.php", function (dataLocations) {
         console.log(dataLocations);
         var name = [];
         var alkalmak = [];
@@ -536,7 +536,7 @@
       //#endregion
 
       //#region Pole grafikon
-      $.post("pole.php", function (dataPole) {
+      $.post("php/pole.php", function (dataPole) {
         console.log(dataPole);
         var name = [];
         var pole = [];
@@ -645,8 +645,8 @@
   <!-- Site footer -->
   <footer>
     <div id="footer">
-    <div class="footer navbar-fixed-bottom">      
-      <div class="row">
+      <div class="footer navbar-fixed-bottom navbar-expand-lg ">
+        <div class="row">
         <div class="col-6">
           <small-2">Kovács Gergő - 2021</small-2>                           
         </div>

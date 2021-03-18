@@ -29,9 +29,9 @@ mysqli_close($conn);
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="footer.css" />
-  <link rel="stylesheet" href="bootstrap.css" />
-  <link rel="stylesheet" href="osszehasonlitas.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/osszehasonlitas.css" />
   <title>F1Stats</title>
 
 </head>
@@ -39,7 +39,7 @@ mysqli_close($conn);
 <body>
   <!--Navigációs menü-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="fooldal.html">F1_SATS</a>
+    <a class="navbar-brand" href="index.html">F1_SATS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,7 +47,7 @@ mysqli_close($conn);
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="fooldal.html">Főoldal</a>
+          <a class="nav-link" href="index.html">Főoldal</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="statisztikak.html">Statisztikák</a>
@@ -78,7 +78,6 @@ mysqli_close($conn);
 
 
   <!--Bevezető-->
-  <div id="bevezeto">
     <div class="jumbotron">
       <h1 class="display-3">Head-to-Head</h1>
       <p class="lead">Itt összehasonlíthatsz két általad válaszott pilótát <br> bizonyos szempontok alapján egy táblázatban</p>
@@ -88,22 +87,22 @@ mysqli_close($conn);
         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
       </p>
     </div>
-  </div>
 
 
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-2" >        
       </div>
       <div class="col-8">
       <label>Pilóta:</label>
-        <form action="pilotavalasztas.php" method="get">
+        <form class="form-group" action="pilotavalasztas.php" method="post">
           <select name="pilota1">
             <option value="-1">---Válassz---</option>
             <?php
-            echo $html;
+            echo $html;            
             ?>
+            <input type="hidden" name="id" id="id">
           </select>
           <select name="pilota2">
             <option value="-1">---Válassz---</option>
@@ -112,6 +111,7 @@ mysqli_close($conn);
             ?>
           </select>
           <button type="submit" style="color: white; background-color:red; border-color:black;">Küldés</button>
+          
         </form>
       </div>
       <div class="col-2" >        
@@ -130,7 +130,8 @@ mysqli_close($conn);
 
 
 
-  <div class="container">
+
+  <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -202,7 +203,7 @@ mysqli_close($conn);
 </body>
 <footer>
   <div id="footer">
-    <div class="footer navbar-fixed-bottom">
+    <div class="footer navbar-fixed-bottom navbar-expand-lg ">
       <div class="row">
         <div class="col-6">
           <small-2">Kovács Gergő - 2021</small-2>

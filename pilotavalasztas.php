@@ -1,15 +1,23 @@
 <?php
+session_start();
 
 $conn = mysqli_connect("localhost","root","","f1_1950-2020_adatbazis","3306");
-if(isset($_GET['pilota1']))
+if(isset($_POST['pilota1']))
 {    
-    $p1=$_GET['pilota1'];  
-    echo $p1;   
+    $p1=$_POST['pilota1'];
+    
+    var_dump($p1);
+    
+        
 }
-if(isset($_GET['pilota2']))
+
+
+
+
+if(isset($_POST['pilota2']))
 {
-    $p2=$_GET['pilota2'];
-    echo $p2;
+    $p2=$_POST['pilota2'];
+    
 }
 
 mysqli_close($conn);
@@ -25,9 +33,9 @@ mysqli_close($conn);
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="footer.css" />
-  <link rel="stylesheet" href="bootstrap.css" />
-  <link rel="stylesheet" href="osszehasonlitas.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/osszehasonlitas.css" />
   <title>F1Stats</title>
 
 </head>
@@ -35,7 +43,7 @@ mysqli_close($conn);
 <body>
   <!--Navigációs menü-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="fooldal.html">F1_SATS</a>
+    <a class="navbar-brand" href="index.html">F1_SATS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,7 +51,7 @@ mysqli_close($conn);
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="fooldal.html">Főoldal</a>
+          <a class="nav-link" href="index.html">Főoldal</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="statisztikak.html">Statisztikák</a>
@@ -96,7 +104,7 @@ mysqli_close($conn);
 
 
 
-  <div class="container">
+  <div class="table-responsive">
     <table class="table table-hover" style="text-align:center">
       <thead>
         <tr>
@@ -168,7 +176,7 @@ mysqli_close($conn);
 </body>
 <footer>
   <div id="footer">
-    <div class="footer navbar-fixed-bottom">
+  <div class="footer navbar-fixed-bottom navbar-expand-lg ">
       <div class="row">
         <div class="col-6">
           <small-2">Kovács Gergő - 2021</small-2>
