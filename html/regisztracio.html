@@ -1,0 +1,43 @@
+<div id="bevezeto">
+    <div class="jumbotron">
+        <h1 class="display-3">Regisztráció</h1>
+        <p class="lead">Regisztrálj és iratkozz fel hírleveleinkre!</p>
+        <hr class="my-4">
+
+    </div>
+</div>
+
+
+<div class="d-flex  justify-content-center vh-50" style="margin-top:10%; margin-bottom:10%">
+<?php echo $error; ?>
+    <div class="col-6 form-group bg-secondary" style="border-radius: 20px;">
+        <h2 class="text-center " style="margin-bottom: 5%; color:white">Kérjük töltse ki az alábbi mezőket</h2>
+        <form action="#" method="post" class="col">
+            <div class="form-group">
+                <label for="email" style="color:white">Adja meg az email címét!</label>
+                <input type="email" class="form-control " placeholder="Email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color:white">Adja meg a nevét!</label>
+                <input type="text" class="form-control " placeholder="Név" name="nev" required>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color:white">Adja meg a jelszót!</label>
+                <input type="password" class="form-control " placeholder="Jelszó" name="pass" required>
+            </div>
+            <div class="form-group " style="color:white">
+                <label for="email">Adja meg újra a jelszavát!</label>
+                <input type="password" class="form-control " placeholder="Jelszó" name="passm" required>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="hidden" value="0" name="subscr">
+                <input class="form-check-input" type="checkbox" value="1" name="subscr">
+                <label class="form-check-label" for="defaultCheck1" style="color:white">
+                    Szeretnék hírleveleket kapni a futamok után
+                </label>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-bottom:5%">Regisztráció</button>
+        </form>
+    </div>        
+</div>
