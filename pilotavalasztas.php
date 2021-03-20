@@ -70,7 +70,7 @@ mysqli_close($conn);
             <a class="nav-link" href="#">Belépés</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Regisztráció</a>
+          <a class="nav-link" href="regisztracio.php">Regisztráció</a>
           </li>
         </ul>
       </form>
