@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "f1_1950-2020_adatbazis", "3306");
 //$conn = mysqli_connect("127.0.0.1", "statsf1", "kJpf@MD@pAK6");
 
@@ -24,7 +25,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_POST['email'])) && (!emp
             $hash = hash('sha512', $pwd);
             if (password_verify($hash, $pwdDb)) {
                 $_SESSION['userid'] = $id;
-                header('Location: index.html');
+                header('Location: index.php');
                 exit();
             }
         }
@@ -54,7 +55,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_POST['email'])) && (!emp
 
     <!--Navigációs menü-->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.html">F1_SATS</a>
+        <a class="navbar-brand" href="index.php">F1_SATS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -62,10 +63,10 @@ if (($_SERVER['REQUEST_METHOD'] == 'POST') && (!empty($_POST['email'])) && (!emp
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Főoldal</a>
+                    <a class="nav-link" href="index.php">Főoldal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="statisztikak.html">Statisztikák</a>
+                    <a class="nav-link" href="statisztikak.php">Statisztikák</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="osszehasonlitas.php">Összehasonlítás</a>

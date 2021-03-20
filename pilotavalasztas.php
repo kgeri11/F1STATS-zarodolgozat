@@ -43,7 +43,7 @@ mysqli_close($conn);
 <body>
   <!--Navigációs menü-->
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="index.html">F1_SATS</a>
+    <a class="navbar-brand" href="index.php">F1_SATS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -51,7 +51,7 @@ mysqli_close($conn);
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Főoldal</a>
+          <a class="nav-link" href="index.php">Főoldal</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="statisztikak.html">Statisztikák</a>

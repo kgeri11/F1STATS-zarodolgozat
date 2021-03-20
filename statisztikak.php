@@ -17,51 +17,13 @@
     <title>F1Stats</title>
   </head>
   <body>
-    <!--Navigációs menü-->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="index.html">F1_SATS</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Főoldal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="statisztikak.html">Statisztikák</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="osszehasonlitas.php">Összehasonlítás</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="specialis.html">Speciális</a>
-          </li>        
-          
-        </ul>
-        <form class="form-inline my-2 my-lg-0">          
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Belépés</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="regisztracio.php">Regisztráció</a>
-            </li>      
-          </ul>
-        </form>
-        
-      </div>
-      
-    </nav>
+    <?php
+session_start();
+if (!empty($_SESSION['userid'])){
+    echo file_get_contents('html/menu_in.html');
+} else {
+    echo file_get_contents('html/menu_out.html');
+}?>
 
 
     <!--Bevezető-->
@@ -642,19 +604,4 @@
     
 
   </body>
-  <!-- Site footer -->
-  <footer>
-    <div id="footer">
-      <div class="footer navbar-fixed-bottom navbar-expand-lg ">
-        <div class="row">
-        <div class="col-6">
-          <small-2">Kovács Gergő - 2021</small-2>                           
-        </div>
-        <div class="col-3"></div>      
-        <div class="col-3">Záródolgozat</div>
-        </div>
-      </div>
-      </div>        
-   </footer>
- 
-</html>
+ <?php echo file_get_contents('html/footer.html');
