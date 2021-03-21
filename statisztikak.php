@@ -65,16 +65,19 @@ if (!empty($_SESSION['userid'])){
         <div class="row">
           
           <div class="col-8">
-            <div class="wrapper">
-
-            
+            <div class="wrapper">            
             <div class="container-fluid" id="chart-container">
               <canvas id="graphCanvas"></canvas>
             </div>
           </div>
+          </div>          
+          <div class="col-4 d-flex align-items-center justify-content-center">
+          <p>
+          Michael Schumaher megdönthetetlennek hitt 
+          rekordját 2020-ban megdönttte Lewis Hamilton,
+          így mostmár ő a legtöbb győzelemmel rendelkező pilóta
+            </p>
           </div>
-          
-          <div class="col-4"></div>
         </div>
       </div>
 
@@ -100,8 +103,8 @@ if (!empty($_SESSION['userid'])){
       <!--Konstruktőri győzelmek grafikon-->
       <div id="egeszkonstruktor" class="container-fluid">
         <div class="row">
-          <div class="col-4" style="padding: 100px;text-align: justify;">
-            <p style="text-align: justify;" ></p>
+          <div class="col-4 d-flex align-items-center justify-content-center">
+            <p>
               Az alábbi ábra azon konstruktőröket tartalmazza, akik a FIA
               Formula–1 világbajnokságba számító nagydíjat nyertek. Az
               abszolút csúcsot az olasz Scuderia Ferrari tartja, ami az első
@@ -146,8 +149,8 @@ if (!empty($_SESSION['userid'])){
               <canvas id="graphRound"></canvas>              
             </div>
           </div>
-          <div class="col-4" style="padding: 100px;">
-            <p style="text-align: justify;">
+          <div class="col-4 d-flex align-items-center justify-content-center">
+            <p >
               Az 1950 óta megrendezett Formula–1 világbajnokság történetében
               41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
               ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
@@ -180,12 +183,9 @@ if (!empty($_SESSION['userid'])){
       <!--Helyszínek grafikon-->
       <div id="egeszhelyszin" class="container-fluid">
         <div class="row">
-          <div class="col-4" style="padding: 100px;">
-            <p style="text-align: justify">
-              Az 1950 óta megrendezett Formula–1 világbajnokság történetében
-              41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
-              ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
-              mellett megrendezett, más címért kiírt verseny volt.
+          <div class="col-4 d-flex align-items-center justify-content-center">
+            <p >
+              A Forma 1 szűlőhazájának számító Angliában, valami a Ferrari hazai futamának tekintett Olasz nagydíj adott otthont eddig a legtöbb nagydíjnak.
             </p>
           </div>
           <div class="col-8">
@@ -230,8 +230,8 @@ if (!empty($_SESSION['userid'])){
               <canvas id="graphPole"></canvas>              
             </div>
           </div>
-          <div class="col-4" style="padding: 100px;">
-            <p style="text-align: justify;">              
+          <div class="col-4 d-flex align-items-center justify-content-center">
+            <p>              
               1950 óta pontosan 101 pilóta indulhatott az első rajtkockából. Ezek közül a legsikeresebbek láthatóak az alábbi ábrán.
             </p>
           </div>
@@ -246,11 +246,11 @@ if (!empty($_SESSION['userid'])){
           <div class="col-4"></div>
           <div class="col-8">
             <div
-              id="expand5"
+              id="expand6"
               class="alert alert-primary alert-dismissible alert-warning"
             >
               <h4 style="text-align: center" class="alert-heading">
-                Versenyek száma helyszínenként
+                GP rajtok száma
               </h4>
               
             </div>
@@ -258,11 +258,11 @@ if (!empty($_SESSION['userid'])){
         </div>
       </div>
 
-      <!--valami#2 grafikon-->
-      <div id="egeszhelyszin" class="container-fluid">
+      <!--GP rajtok grafikon-->
+      <div id="egeszindulas" class="container-fluid">
         <div class="row">
-          <div class="col-4" style="padding: 30px;">
-            <p style="text-align: justify">
+          <div class="col-4 d-flex align-items-center justify-content-center">
+            <p >
               Az 1950 óta megrendezett Formula–1 világbajnokság történetében
               41 különböző elnevezésű nagydíjat rendeztek, egy részük – akár
               ugyanazon szezonon belül – azonban csak a nemzeti nagydíj
@@ -272,7 +272,7 @@ if (!empty($_SESSION['userid'])){
           <div class="col-8">
             <div id="chart-container">
               <canvas
-                id="graph??"                
+                id="graphStart"                
               ></canvas>
             </div>
           </div>
@@ -461,7 +461,7 @@ if (!empty($_SESSION['userid'])){
           labels: name,
           datasets: [
             {
-              label: "Pole pozíciók",
+              label: "Futam",
               backgroundColor: dynamicColors(),
               borderColor: dynamicColors(),
               hoverBackgroundColor: "#CCCCCC",
@@ -509,7 +509,7 @@ if (!empty($_SESSION['userid'])){
           labels: name,
           datasets: [
             {
-              label: "Futamok száma helyszínenklnt",
+              label: "Pole pozíciók",
               backgroundColor: dynamicColors(),
               borderColor: dynamicColors(),
               hoverBackgroundColor: "#CCCCCC",
@@ -533,6 +533,53 @@ if (!empty($_SESSION['userid'])){
         };
 
         var graphTarget = $("#graphPole");
+
+        var barGraph = new Chart(graphTarget, {
+          type: "bar",
+          data: chartdata,
+        });
+      });
+
+
+      //#region Indulások grafikon
+      $.post("php/indulas.php", function (dataIndulas) {
+        console.log(dataIndulas);
+        var name = [];
+        var start = [];
+
+        for (var i in dataIndulas) {
+          name.push(dataIndulas[i].surname);
+          start.push(dataIndulas[i].start);
+        }
+
+        var chartdata = {
+          labels: name,
+          datasets: [
+            {
+              label: "GP rajtok",
+              backgroundColor: dynamicColors(),
+              borderColor: dynamicColors(),
+              hoverBackgroundColor: "#CCCCCC",
+              hoverBorderColor: "#666666",
+              data: start,
+            },
+          ],
+
+          options: {
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    begintAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        };
+
+        var graphTarget = $("#graphStart");
 
         var barGraph = new Chart(graphTarget, {
           type: "bar",
@@ -591,7 +638,7 @@ if (!empty($_SESSION['userid'])){
 
       $(document).ready(function () {
         $("#expand6").click(function () {
-          $("#egeszhelyszin").toggle("slow");
+          $("#egeszindulas").toggle("slow");
         });
       });
 

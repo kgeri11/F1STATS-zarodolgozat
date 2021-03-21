@@ -2,4 +2,4 @@
 session_start();
 session_unset('nev');
 session_destroy();
-header('Location: php/kilepes.php');
+header('Location: index.php');
