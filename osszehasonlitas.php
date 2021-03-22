@@ -29,7 +29,7 @@ if (!empty($_SESSION['userid'])){
   <!--Bevezető-->
     <div class="jumbotron">
       <h1 class="display-3">Head-to-Head</h1>
-      <p class="lead">Itt összehasonlíthatsz két általad válaszott pilótát <br> bizonyos szempontok alapján egy táblázatban</p>
+      <p class="lead">Itt összehasonlíthatsz két általad válaszott pilótát <br> a megadott szempontok alapján a táblázatban</p>
       <hr class="my-4">
       <p>A pilótákat a lenyíló ablakokban lehet kiválasztani</p>     
     </div>
