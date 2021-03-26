@@ -1,18 +1,27 @@
 <?php
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "f1_1950-2020_adatbazis", "3306");
-$sql = "SELECT DISTINCT results.driverId,CONCAT_WS(' ',drivers.forename,drivers.surname) AS fullname FROM `results` LEFT JOIN drivers ON results.driverId = drivers.driverId ORDER BY `fullname` ASC";
+$sql = "SELECT DISTINCT results.driverId,drivers.forename,drivers.surname FROM `results` LEFT JOIN drivers ON results.driverId = drivers.driverId ORDER BY drivers.forename ASC";
 $result = $conn->query($sql);
 
-$html="";
+$elsopilota="";
+$masodikpilota="";
 if (!$result) {
   die("Hibás sql lekérdezés!");
 }
 while ($row = $result->fetch_assoc()) {
   $id = $row["driverId"];
-  $nev = $row["fullname"];
-  $html .= '<option value"' . $row["driverId"] . '">' . $row["fullname"] . '</option>';
+  $fname = $row["forename"];
+  $sname = $row["surname"];
+  $elsopilota .= '<option value"' . $id . '">' . $fname .' '.  $sname .'</option>';
+  $masodikpilota .= '<option value"' . $id . '">' . $fname  .' '. $sname . '</option>';
 }
+
+$return["pilota1"] = $elsopilota;
+$return["pilota2"] = $masodikpilota;
+
+echo json_encode($return);
+
 
 mysqli_close($conn);
 echo file_get_contents('html/head.html');
@@ -43,17 +52,17 @@ if (!empty($_SESSION['userid'])){
       <div class="col-8">
       <label>Pilóta:</label>
         <form class="form-group" action="pilotavalasztas.php" method="post">
+         
           <select name="pilota1">
             <option value="-1">---Válassz---</option>
             <?php
-            echo $html;            
-            ?>
-            <input type="hidden" name="id" id="id">
+            echo $elsopilota;            
+            ?>            
           </select>
           <select name="pilota2">
             <option value="-1">---Válassz---</option>
             <?php
-            echo $html;
+            echo $masodikpilota;
             ?>
           </select>
           <button type="submit" style="color: white; background-color:red; border-color:black;">Küldés</button>

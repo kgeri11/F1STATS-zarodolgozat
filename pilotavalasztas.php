@@ -1,14 +1,15 @@
+
 <?php
 session_start();
 
 $conn = mysqli_connect("localhost","root","","f1_1950-2020_adatbazis","3306");
+
+
 if(isset($_POST['pilota1']))
 {    
-    $p1=$_POST['pilota1'];
+    $elsopilota=$_POST['pilota1'];
     
-    var_dump($p1);
-    
-        
+    var_dump($elsopilota);        
 }
 
 
@@ -16,13 +17,12 @@ if(isset($_POST['pilota1']))
 
 if(isset($_POST['pilota2']))
 {
-    $p2=$_POST['pilota2'];
-    
+    $masodikpilota=$_POST['pilota2'];
+    var_dump($masodikpilota);
 }
 
 mysqli_close($conn);
 
-mysqli_close($conn);
 echo file_get_contents('html/head.html');
 if (!empty($_SESSION['userid'])){
     echo file_get_contents('html/menu_in.html');
@@ -80,8 +80,8 @@ if (!empty($_SESSION['userid'])){
       <thead>
         <tr>
           <th scope="col">Type</th>
-          <th scope="col" style="color: white; background-color:black;"><?php echo $p1 ?></th>
-          <th scope="col" style="color: white; background-color:red"><?php echo $p2 ?></th>
+          <th scope="col" style="color: white; background-color:black;"><?php echo $elsopilota ?></th>
+          <th scope="col" style="color: white; background-color:red"><?php echo $masodikpilota ?></th>
           
         </tr>
       </thead>
