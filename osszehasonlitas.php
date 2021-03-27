@@ -13,12 +13,13 @@ while ($row = $result->fetch_assoc()) {
   $id = $row["driverId"];
   $fname = $row["forename"];
   $sname = $row["surname"];
-  $elsopilota .= '<option value"' . $id . '">' . $fname .' '.  $sname .'</option>';
-  $masodikpilota .= '<option value"' . $id . '">' . $fname  .' '. $sname . '</option>';
+  $elsopilota .= '<option value"' . $id . '">' .$id.' '. $fname .' '.  $sname .'</option>';
+  $masodikpilota .= '<option value"' . $id . '">'.$id.' ' . $fname  .' '. $sname . '</option>';
 }
 
 $return["pilota1"] = $elsopilota;
 $return["pilota2"] = $masodikpilota;
+ 
 
 echo json_encode($return);
 
@@ -53,8 +54,8 @@ if (!empty($_SESSION['userid'])){
       <label>Pilóta:</label>
         <form class="form-group" action="pilotavalasztas.php" method="post">
          
-          <select name="pilota1">
-            <option value="-1">---Válassz---</option>
+          <select name="pilota1" >
+            <option  value="-1">---Válassz---</option>
             <?php
             echo $elsopilota;            
             ?>            
@@ -66,7 +67,6 @@ if (!empty($_SESSION['userid'])){
             ?>
           </select>
           <button type="submit" style="color: white; background-color:red; border-color:black;">Küldés</button>
-          
         </form>
       </div>
       <div class="col-2" >        

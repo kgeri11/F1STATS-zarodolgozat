@@ -1,25 +1,153 @@
 
 <?php
 session_start();
-
 $conn = mysqli_connect("localhost","root","","f1_1950-2020_adatbazis","3306");
 
 
 if(isset($_POST['pilota1']))
 {    
-    $elsopilota=$_POST['pilota1'];
-    
-    var_dump($elsopilota);        
+    $elsopilota=$_POST['pilota1']; 
+    $elsobontott = explode( ' ', $elsopilota );         
 }
-
-
-
-
 if(isset($_POST['pilota2']))
 {
-    $masodikpilota=$_POST['pilota2'];
-    var_dump($masodikpilota);
+    $masodikpilota=$_POST['pilota2'];    
+    $masodikbontott = explode( ' ', $masodikpilota );
 }
+#region rajtok száma első pilóta
+$sqlrajtelso = "SELECT COUNT(results.driverId) AS indulasok 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId 
+WHERE drivers.driverId = '$elsobontott[0]'";
+$result = mysqli_query($conn,$sqlrajtelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datarajtelso = $row['indulasok'];
+}
+#endregion
+
+#region rajtok száma második pilóta
+$sqlrajtmasodik = "SELECT COUNT(results.driverId) AS indulasok 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId 
+WHERE drivers.driverId = '$masodikbontott[0]'";
+$result = mysqli_query($conn,$sqlrajtmasodik);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datarajtmasodik = $row['indulasok'];
+}
+#endregion
+
+
+#region győzelmek száma első pilóta
+$sqlgyozelmekelso = "SELECT COUNT(results.positionOrder) AS wins 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.positionOrder = '1' AND drivers.driverId = '$elsobontott[0]'";
+$result = mysqli_query($conn,$sqlgyozelmekelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datagyozelmekelso = $row['wins'];
+  var_dump($datagyozelmekelso);
+}
+#endregion
+
+#region győzelmek száma második pilóta
+$sqlgyozelmekmasodik = "SELECT COUNT(results.positionOrder) AS wins 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.positionOrder = '1' AND drivers.driverId = '$masodikbontott[0]'";
+$result = mysqli_query($conn,$sqlgyozelmekmasodik);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datagyozelmekmasodik = $row['wins'];
+  var_dump($datagyozelmekmasodik);
+}
+#endregion
+
+#region dobogós helyezések száma első pilóta
+$sqldobogoelso = "SELECT COUNT(results.positionOrder) AS dobogo 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.positionOrder = '1' OR results.positionOrder = '2'  AND drivers.driverId = '1'";
+$result = mysqli_query($conn,$sqldobogoelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datadobogoelso = $row['dobogo'];
+  var_dump($datadobogoelso);
+}
+#endregion
+
+#region pole száma első pilóta
+$sqlpoleelso = "SELECT COUNT(results.grid) AS pole 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.grid = '1' AND drivers.driverId = '$elsobontott[0]'";
+$result = mysqli_query($conn,$sqlpoleelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datapoleelso = $row['pole'];
+  var_dump($datapoleelso);
+}
+#endregion
+
+#region pole száma második pilóta
+$sqlpolemasodik = "SELECT COUNT(results.grid) AS pole 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.grid = '1' AND drivers.driverId = '$masodikbontott[0]'";
+$result = mysqli_query($conn,$sqlpolemasodik);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datapolemasodik = $row['pole'];
+  var_dump($datapolemasodik);
+}
+#endregion
+
+#region dobogós helyezések száma első pilóta
+$sqldobogoelso = "SELECT COUNT(results.positionOrder) AS dobogo 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.positionOrder = '1' OR results.positionOrder = '2'  AND drivers.driverId = '1'";
+$result = mysqli_query($conn,$sqldobogoelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datadobogoelso = $row['dobogo'];
+  var_dump($datadobogoelso);
+}
+#endregion
+
+
+
+#region dobogós helyezések száma második pilóta
+$sqldobogomasodik = "SELECT COUNT(results.positionOrder) AS dobogo 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId
+WHERE results.positionOrder = '1' OR results.positionOrder = '2'  AND drivers.driverId = '1'";
+$result = mysqli_query($conn,$sqldobogomasodik);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datadobogomasodik = $row['dobogo'];
+  var_dump($datadobogomasodik);
+}
+#endregion
+
+#region pontok száma első pilóta
+$sqlpontokelso = "SELECT sum(results.points) AS pontok 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId 
+WHERE drivers.driverId = '$elsobontott[0]'";
+$result = mysqli_query($conn,$sqlpontokelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datapontokelso = $row['pontok'];
+  var_dump($datapontokelso);
+}
+#endregion
+
+#region pontok száma második pilóta
+$sqlpontokmasodik = "SELECT sum(results.points) AS pontok 
+FROM `results` LEFT JOIN drivers ON results.driverId=drivers.driverId 
+WHERE drivers.driverId = '$masodikbontott[0]'";
+$result = mysqli_query($conn,$sqlpontokmasodik);
+while($row = mysqli_fetch_assoc($result))
+{
+  $datapontokmekmasodik = $row['pontok'];
+  var_dump($datapontokmekmasodik);
+}
+#endregion
+
+
 
 mysqli_close($conn);
 
@@ -80,16 +208,16 @@ if (!empty($_SESSION['userid'])){
       <thead>
         <tr>
           <th scope="col">Type</th>
-          <th scope="col" style="color: white; background-color:black;"><?php echo $elsopilota ?></th>
-          <th scope="col" style="color: white; background-color:red"><?php echo $masodikpilota ?></th>
+          <th scope="col" style="color: white; background-color:black;"><?php echo $elsobontott[1].' '.$elsobontott[2] ?></th>
+          <th scope="col" style="color: white; background-color:red"><?php echo $masodikbontott[1].' '.$masodikbontott[2] ?></th>
           
         </tr>
       </thead>
       <tbody>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Győzelmek</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td><?php echo $datagyozelmekelso ?></td>
+          <td><?php echo $datagyozelmekmasodik ?></td>
         </tr>
         <tr class="table-light">
           <th scope="row" style="text-align:justify">Pódiumok</th>
@@ -98,21 +226,21 @@ if (!empty($_SESSION['userid'])){
         </tr>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Pole poziciók</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td><?php echo $datapoleelso ?></td>
+          <td><?php echo $datapolemasodik ?></td>
         </tr>
         <tr class="table-light">
-          <th scope="row" style="text-align:justify">Leggyorsabb körök</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Karrier pontok</th>
+          <td><?php echo $datapontokelso ?></td>
+          <td><?php echo $datapontokmekmasodik ?></td>
         </tr>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Futamok</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td><?php echo $datarajtelso ?></td>
+          <td><?php echo $datarajtmasodik ?></td>
         </tr>
         <tr class="table-light">
-          <th scope="row" style="text-align:justify">Danger</th>
+          <th scope="row" style="text-align:justify">Első futam</th>
           <td>Column content</td>
           <td>Column content</td>
         </tr>
