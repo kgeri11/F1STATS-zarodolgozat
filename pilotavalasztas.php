@@ -47,7 +47,6 @@ $result = mysqli_query($conn,$sqlgyozelmekelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $datagyozelmekelso = $row['wins'];
-  var_dump($datagyozelmekelso);
 }
 #endregion
 
@@ -59,7 +58,6 @@ $result = mysqli_query($conn,$sqlgyozelmekmasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $datagyozelmekmasodik = $row['wins'];
-  var_dump($datagyozelmekmasodik);
 }
 #endregion
 
@@ -73,7 +71,6 @@ $result = mysqli_query($conn,$sqlpoleelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $datapoleelso = $row['pole'];
-  var_dump($datapoleelso);
 }
 #endregion
 
@@ -85,7 +82,6 @@ $result = mysqli_query($conn,$sqlpolemasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $datapolemasodik = $row['pole'];
-  var_dump($datapolemasodik);
 }
 #endregion
 
@@ -101,7 +97,6 @@ $result = mysqli_query($conn,$sqldobogoelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $datadobogoelso = $row['dobogo'];
-  var_dump($datadobogoelso);
 }
 #endregion
 
@@ -115,7 +110,6 @@ $result = mysqli_query($conn,$sqldobogomasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $datadobogomasodik = $row['dobogo'];
-  var_dump($datadobogomasodik);
 }
 #endregion
 
@@ -129,7 +123,6 @@ $result = mysqli_query($conn,$sqlpontokelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $datapontokelso = $row['pontok'];
-  var_dump($datapontokelso);
 }
 #endregion
 
@@ -141,7 +134,6 @@ $result = mysqli_query($conn,$sqlpontokmasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $datapontokmekmasodik = $row['pontok'];
-  var_dump($datapontokmekmasodik);
 }
 #endregion
 
@@ -155,7 +147,6 @@ $result = mysqli_query($conn,$sqlkorokelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $datakorokelso = $row['korok'];
-  var_dump($datakorokelso);
 }
 #endregion
 
@@ -167,7 +158,6 @@ $result = mysqli_query($conn,$sqlkorokmasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $datakorokmekmasodik = $row['korok'];
-  var_dump($datakorokmekmasodik);
 }
 #endregion
 
@@ -180,7 +170,6 @@ $result = mysqli_query($conn,$sqlatlagrajthelyelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $dataatlagrajthelyelso = $row['atlagrajthely'];
-  var_dump($dataatlagrajthelyelso);
 }
 #endregion
 
@@ -192,7 +181,6 @@ $result = mysqli_query($conn,$sqlatlagrajthelymasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $dataatlagrajthelymekmasodik = $row['atlagrajthely'];
-  var_dump($dataatlagrajthelymekmasodik);
 }
 #endregion
 
@@ -205,7 +193,6 @@ $result = mysqli_query($conn,$sqlatlageredmenyelso);
 while($row = mysqli_fetch_assoc($result))
 {
   $dataatlageredmenyelso = $row['atlageredmeny'];
-  var_dump($dataatlageredmenyelso);
 }
 #endregion
 
@@ -217,12 +204,33 @@ $result = mysqli_query($conn,$sqlatlageredmenymasodik);
 while($row = mysqli_fetch_assoc($result))
 {
   $dataatlageredmenymekmasodik = $row['atlageredmeny'];
-  var_dump($dataatlageredmenymekmasodik);
 }
 #endregion
 
 
-//SELECT MIN(races.date),races.name FROM races LEFT JOIN results ON results.raceId=races.raceId WHERE results.driverId = '3'
+#region első futam első pilóta
+$sqlelsofutamelso = "SELECT races.name, races.date 
+FROM races INNER JOIN results ON results.raceId = races.raceId 
+WHERE results.driverId = '$elsobontott[0]' ORDER BY races.date ASC LIMIT 1";
+$result = mysqli_query($conn,$sqlelsofutamelso);
+while($row = mysqli_fetch_assoc($result))
+{
+  $dataelsofutamelso = $row['date'].' '.$row['name'];
+}
+#endregion
+
+#region első futam második pilóta
+$sqlelsofutammasodik = "SELECT races.name, races.date 
+FROM races INNER JOIN results ON results.raceId = races.raceId 
+WHERE results.driverId = '$masodikbontott[0]' ORDER BY races.date ASC LIMIT 1";
+$result = mysqli_query($conn,$sqlelsofutammasodik);
+while($row = mysqli_fetch_assoc($result))
+{
+  $dataelsofutammekmasodik = $row['date'].' '.$row['name'];
+}
+#endregion
+
+//SELECT races.name, races.date FROM races INNER JOIN results ON results.raceId = races.raceId WHERE results.driverId = '20' ORDER BY races.date ASC LIMIT 1
 
 mysqli_close($conn);
 
@@ -316,8 +324,8 @@ if (!empty($_SESSION['userid'])){
         </tr>
         <tr class="table-light">
           <th scope="row" style="text-align:justify">Első futam</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td><?php echo $dataelsofutamelso ?></td>
+          <td><?php echo $dataelsofutammekmasodik ?></td>
         </tr>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Megtett körök</th>
