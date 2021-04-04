@@ -287,7 +287,7 @@ if (!empty($_SESSION['userid'])){
 
 
   <div class="table-responsive">
-    <table class="table table-hover" style="text-align:center">
+    <table class="table table-hover" style="text-align:center;margin-bottom:5%;">
       <thead>
         <tr>
           <th scope="col">Type</th>

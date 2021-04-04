@@ -46,27 +46,28 @@ if (!empty($_SESSION['userid'])){
 
 
 
-  <div style="margin-top: 10%;" class="container-lg ">
+  <div style="margin-top: 5%;" class="container-lg ">
     <div class="row">
       <div class="col-2" >        
       </div>
-      <div class="col-8">
+      <div class="col-8 bg-dark text-center">
       <label>Pilóta:</label>
-        <form class="form-group" action="pilotavalasztas.php" method="post">
+        <form class="form-group w-auto"  action="pilotavalasztas.php" method="post">
          
-          <select name="pilota1" >
+          <select class="form-control" name="pilota1" >
             <option  value="-1">---Válassz---</option>
             <?php
-            echo $elsopilota;            
+            echo $elsopilota;       
             ?>            
           </select>
-          <select name="pilota2">
+          
+          <select style="margin-top: 2%;" class="form-control" name="pilota2">
             <option value="-1">---Válassz---</option>
             <?php
             echo $masodikpilota;
             ?>
           </select>
-          <button type="submit" style="color: white; background-color:red; border-color:black;">Küldés</button>
+          <button class="btn btn-primary btn-lg form-control" type="submit" style="margin-top:3%;">Küldés</button>
         </form>
       </div>
       <div class="col-2" >        
@@ -87,7 +88,7 @@ if (!empty($_SESSION['userid'])){
 
 
   <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" style="text-align:center; margin-bottom:5%;">
       <thead>
         <tr>
           <th scope="col">Type</th>
@@ -99,54 +100,50 @@ if (!empty($_SESSION['userid'])){
       <tbody>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Győzelmek</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-light">
           <th scope="row" style="text-align:justify">Pódiumok</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Pole poziciók</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-light">
-          <th scope="row" style="text-align:justify">Leggyorsabb körök</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Karrier pontokabb körök</th>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-secondary">
           <th scope="row" style="text-align:justify">Futamok</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-light">
-          <th scope="row" style="text-align:justify">Danger</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Első futam</th>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-secondary">
-          <th scope="row" style="text-align:justify">Warning</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Megtett körök</th>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-light">
-          <th scope="row" style="text-align:justify">Info</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Átlagos rajtpozíció</th>
+          <td>-</td>
+          <td>-</td>
         </tr>
         <tr class="table-secondary">
-          <th scope="row" style="text-align:justify">Light</th>
-          <td>Column content</td>
-          <td>Column content</td>
+          <th scope="row" style="text-align:justify">Átlagos helyezés</th>
+          <td>-</td>
+          <td>-</td>
         </tr>
-        <tr class="table-light">
-          <th scope="row" style="text-align:justify">Dark</th>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
+        
       </tbody>
     </table>
   </div>

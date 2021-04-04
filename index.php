@@ -9,3 +9,5 @@ if (!empty($_SESSION['userid'])){
 }
 echo file_get_contents('html/fooldal.html');
 echo file_get_contents('html/footer.html');
+
+
