@@ -13,37 +13,37 @@ if (!$conn->set_charset("UTF8")) {
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user = $conn->real_escape_string($_POST['nev']);
-    $pwd = $conn->real_escape_string($_POST['pass']);
-    $pwdc = $conn->real_escape_string($_POST['passm']);
-    $email = $conn->real_escape_string($_POST['email']);
-    $subscription = $conn->real_escape_string($_POST['subscr']);
-    $sql = "UPDATE user (email, pwd, name, subscription) VALUES (?, ?, ?, ?)";
+$email = $conn->real_escape_string($_POST['email']);
+$pwd = $conn->real_escape_string($_POST['pass']);
+$npwd = $conn->real_escape_string($_POST['passn']);
+$sub = $conn->real_escape_string($_POST['subscr']);
 
-    if ($pwd != $pwdc) {
-        $error .= '<h5 class="text-danger text-center">A két jelszó nem egyforma!</h5>';
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error .= '<h5 class="text-danger text-center">Nem megfelelő formátumú email cím!</h5>';
-    }
-    if (!preg_match("/^[a-z-' éáűőúöüóí]*$/i", $user)) {
-        $error .= '<h5 class="text-danger text-center">Csak betűk és szókőz használható.</h5>';
-    }
 
-    if ($error == "") {
-        if ($stmt = $conn->prepare($sql)) {
-            $pwdHash = hash('sha512', $pwd);
-            $pwdHash = password_hash($pwdHash, PASSWORD_DEFAULT);
-            $stmt->bind_param('ssss', $email, $pwdHash, $user, $subscription);
-            if (!$stmt->execute()) {
-                $error = '<div><h3 class="text-danger text-center">Sikertelen adatmódosítás!</h3></div> <br> ';
-            } else {
-                $error = '<div><h3 class="text-success text-center">Sikeresen módosította az adatait!</h3></div> <br> ';
-            }
-            $stmt->close();
-        } else {
-            $error = $conn->error;
-        }
+
+
+    $errors = array();
+    $true = true;
+
+    $sql = "SELECT * FROM user 
+        WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+
+   
+
+    if ($pwd==$npwd) {
+        $true = false;
+        $error ='<div><h3 class="text-danger text-center">Nem sikerült módosítani az adatait!</h3></div>';
+    } 
+    if ($true) 
+    {                
+        $pwdHash = hash('sha512', $npwd);
+        $pwdHash = password_hash($pwdHash, PASSWORD_DEFAULT);
+        $sql = "UPDATE user SET  pwd='$pwdHash',subscription='$sub' WHERE email='$email';";
+        mysqli_query($conn, $sql);
+        echo '<script> alert(\'Sikeresen módosította az adatait!\')</script>';
+    } else 
+    {
+        echo '<script> alert(\'Nem sikerült módosítani az adatait!\')</script>';
     }
 }
 $conn -> close();
@@ -51,6 +51,6 @@ $conn -> close();
 
 echo file_get_contents('html/head.html');
 echo file_get_contents('html/menu_in.html');
-echo $error;
 echo file_get_contents('html/profil.html');
+echo $error;
 echo file_get_contents('html/footer.html');

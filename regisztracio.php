@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $pwdHash = password_hash($pwdHash, PASSWORD_DEFAULT);
             $stmt->bind_param('ssss', $email, $pwdHash, $user, $subscription);
             if (!$stmt->execute()) {
-                $error = '<div><h3 class="text-danger text-center">Regisztráció sikertelen!</h3><h5 class="text-danger text-center"> Kérjünk próbálja meg újra!</h5></div> <br> ';
+                $error = '<div><h3 class="text-danger text-center">Regisztráció sikertelen!</h3><h5 class="text-danger text-center"> Kérjünk próbálja meg újra!</h5></div>';
             } else {
-                $error = '<div><h3 class="text-success text-center">Sikeres Regisztráció!</h3><h4 class="text-success text-center"> Bejelentkezéshez kattintson a belépés gombra </h4></div> <br> ';
+                $error = '<div><h3 class="text-success text-center">Sikeres Regisztráció!</h3><h4 class="text-success text-center"> Bejelentkezéshez kattintson a belépés gombra </h4></div>';
             }
             $stmt->close();
         } else {
@@ -54,6 +54,7 @@ if (!empty($_SESSION['userid'])){
     echo file_get_contents('html/menu_out.html');
 }
 echo file_get_contents('html/regisztracio.html');
+echo $error;
 echo file_get_contents('html/footer.html');
 
 ?>
